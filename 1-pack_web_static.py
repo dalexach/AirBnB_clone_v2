@@ -17,7 +17,7 @@ def do_pack():
     local("mkdir -p versions")
     create = local("tar -cvzf {} web_static".format(path))
 
-    if create.succeded:
+    if create.succeeded:
         return path
     else:
         return None
