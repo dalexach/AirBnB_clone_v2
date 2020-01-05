@@ -10,11 +10,11 @@ def do_pack():
     """
 
     from datetime import datetime
-    from fabric.operations import local
+    from fabric.api import *
 
     date_now = datetime.utcnow().strftime("%Y%m%d%H%M%S")
     path = "./versions/web_static_{}".format(date_now)
-    local("mkdir -p versions")
+    local("mkdir -p ./versions")
     create = local("tar -cvzf {} web_static".format(path))
 
     if create.succeeded:
