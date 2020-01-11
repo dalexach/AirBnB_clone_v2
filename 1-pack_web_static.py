@@ -10,7 +10,7 @@ def do_pack():
     """
 
     from datetime import datetime
-    from fabric.api import *
+    from fabric.api import local
 
     date_now = datetime.utcnow().strftime("%Y%m%d%H%M%S")
     path = "./versions/web_static_{}".format(date_now)
