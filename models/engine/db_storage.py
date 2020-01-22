@@ -17,26 +17,29 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        self.config = {
-            'env': os.getenv('HBNB_ENV'),
-            'dialect': 'mysql',
-            'driver': 'mysqldb',
-            'user': os.getenv('HBNB_MYSQL_USER'),
-            'pass': os.getenv('HBNB_MYSQL_PWD'),
-            'host': os.getenv('HBNB_MYSQL_HOST'),
-            'port': 3306,
-            'db': os.getenv('HBNB_MYSQL_DB')
-        }
-        self.__engine = create_engine(
-            '{}+{}://{}:{}@{}:{}/{}'.format(
-                self.config['dialect'],
-                self.config['driver'],
-                self.config['user'],
-                self.config['pass'],
-                self.config['host'],
-                self.config['port'],
-                self.config['db']
-            ), pool_pre_ping=True)
+        try:
+            self.config = {
+                'env': os.getenv('HBNB_ENV'),
+                'dialect': 'mysql',
+                'driver': 'mysqldb',
+                'user': os.getenv('HBNB_MYSQL_USER'),
+                'pass': os.getenv('HBNB_MYSQL_PWD'),
+                'host': os.getenv('HBNB_MYSQL_HOST'),
+                'port': 3306,
+                'db': os.getenv('HBNB_MYSQL_DB')
+            }
+            self.__engine = create_engine(
+                '{}+{}://{}:{}@{}:{}/{}'.format(
+                    self.config['dialect'],
+                    self.config['driver'],
+                    self.config['user'],
+                    self.config['pass'],
+                    self.config['host'],
+                    self.config['port'],
+                    self.config['db']
+                ), pool_pre_ping=True)
+        except Exception:
+            pass
 
         self.__session = sessionmaker(self.__engine)()
 
