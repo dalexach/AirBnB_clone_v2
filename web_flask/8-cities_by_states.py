@@ -14,7 +14,7 @@ app.url_map.strict_slashes = False
 @app.route('/cities_by_states')
 def cities_by_states():
     """
-        List of cities and states in jinja template
+    List cities and states in a jinja template
     """
     all_states = storage.all("State")
     return render_template('8-cities_by_states.html', states=all_states)
