@@ -20,6 +20,15 @@ def states_list():
     return render_template('8-cities_by_states.html', states=all_states)
 
 
+@app.route('/cities_by_states')
+def cityes_by_states():
+    """
+        List of cities and states
+    """
+    all_states = storage.all("State")
+    return render_template('8-cities_by_states.html', states=all_states)
+
+
 @app.teardown_appcontext
 def teardown_app(exception):
     """
