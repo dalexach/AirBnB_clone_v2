@@ -21,7 +21,7 @@ def states_list():
 
 
 @app.teardown_appcontext
-def tear_down():
+def teardown_app(exception):
     """
         Closing the storage
     """
