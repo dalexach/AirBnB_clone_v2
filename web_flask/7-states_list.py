@@ -20,8 +20,8 @@ def states_list():
     return render_template('7-states_list.html', states=all_states)
 
 
-@app.teardown_appcontext('/hbnb')
-def tear_down(self):
+@app.teardown_appcontext
+def tear_down():
     """
         Closing the storage
     """
