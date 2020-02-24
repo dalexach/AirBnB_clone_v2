@@ -22,7 +22,7 @@ def do_pack():
 
         f1 = "versions/web_static{}.tgz web_static".format(date_now)
         f2 = local("tar -cvzf {}".format(f1))
-        return f2 
+        return f2
 
     except Exception:
         return None
