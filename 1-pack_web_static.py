@@ -4,7 +4,8 @@
 """
 
 from datetime import datetime
-from fabric.api import local
+from fabric.operations import local, run
+import os
 
 
 def do_pack():
@@ -12,12 +13,16 @@ def do_pack():
         Funtion that creates a .tgz
     """
 
-    date_now = datetime.utcnow().strftime("%Y%m%d%H%M%S")
-    path = "./versions/web_static_{}".format(date_now)
-    local("mkdir -p ./versions")
-    create = local("tar -cvzf {} web_static".format(path))
+    date = datetime.now()
+    date_now = date.strftime("%Y%m%d%H%M%S")
 
-    if create.succeeded:
-        return path
-    else:
+    try:
+        if not os.path.isdir("versions"):
+            local("mkdir versions")
+
+        f1 = "versions/web_static{}.tgz web_static".format(date_now)
+        f2 = local("tar -cvzf {}".format(f1))
+        return f2 
+
+    except Exception:
         return None
