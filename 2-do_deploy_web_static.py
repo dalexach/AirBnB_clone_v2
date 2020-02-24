@@ -13,6 +13,7 @@ import re
 env.hosts = ['34.74.41.230', '34.74.9.120']
 env.user = 'ubuntu'
 
+
 def do_pack():
     """
         Funtion that creates a .tgz
@@ -32,9 +33,10 @@ def do_pack():
     except Exception:
         return None
 
+
 def do_deploy(archive_path):
     """
-    	Function to deploy
+        Function to deploy
     """
 
     if not os.path.exists(archive_path):
